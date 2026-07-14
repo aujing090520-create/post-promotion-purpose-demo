@@ -255,8 +255,6 @@ function PurchasePage({
 
   const confirmPurpose = (nextPurpose) => {
     onPurpose(nextPurpose);
-    localStorage.setItem("promotion-purpose", nextPurpose);
-    localStorage.setItem("promotion-purpose-seen", "true");
     setPurposeOpen(false);
     setToast(nextPurpose === "default" ? "已恢复默认推广" : `已选择${PURPOSES[nextPurpose].label}`);
   };
@@ -824,9 +822,8 @@ function Workbench({
 }
 
 function App() {
-  const rememberedPurpose = localStorage.getItem("promotion-purpose");
   const [route, setRoute] = useState("purchase");
-  const [purpose, setPurpose] = useState(PURPOSES[rememberedPurpose] ? rememberedPurpose : "default");
+  const [purpose, setPurpose] = useState("default");
   const [boostCount, setBoostCount] = useState(500);
   const [oldVersion, setOldVersion] = useState(false);
   const [refreshIndex, setRefreshIndex] = useState(0);
@@ -835,7 +832,6 @@ function App() {
 
   const choosePurpose = (nextPurpose) => {
     setPurpose(nextPurpose);
-    localStorage.setItem("promotion-purpose", nextPurpose);
   };
 
   const continueWithPurpose = (nextPurpose) => {

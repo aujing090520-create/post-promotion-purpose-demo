@@ -1100,7 +1100,11 @@ input:focus-visible {
 }
 
 .promotion-like-hint .toolbar-heart {
-  animation: heart-nudge 1.8s ease-in-out infinite;
+  animation: heart-nudge 1.8s ease-in-out 1;
+}
+
+.promotion-like-hint .toolbar-heart::before {
+  animation: heart-ripple 1.5s ease-out 1 forwards;
 }
 
 .degrade-banner {
